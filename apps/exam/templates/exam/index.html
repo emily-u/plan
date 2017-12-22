@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <h3>Register</h3>
+
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    
+    <form action="/regis" method="POST">
+        {% csrf_token %}
+        Name:
+        <input type='text' name='name'><br>
+        Username:
+        <input type='text' name='username'><br>
+        Password:
+        <input type='password' name='password'><br>
+        *Password should be at least 8 characters<br>
+        Confirm PW:
+        <input type='password' name='cpassword'><br>
+    
+
+        <button>Register</button>
+        </form>
+    
+        <form action="/login" method="POST">
+        {% csrf_token %}    
+        <h3>Login</h3>
+        Username
+        <input type='text' name='username'><br>
+        Password
+        <input type='password' name='password'><br>
+
+        <button>Login</button>
+    </form>
+</body>
+</html>

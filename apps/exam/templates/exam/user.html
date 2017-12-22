@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/travels">Home</a>
+    <form action="/logout" method="POST">
+        {% csrf_token %}
+        <a href="/main">Logout</a>
+    </form>  
+
+    <h1>{{trip.destination}}</h1>
+    <h4>Planed By: {{trip.creator.name}}</h4>
+    <h4>Description: {{trip.description}}</h4>
+    <h4>Travel Date From: {{trip.startdate}}</h4>
+    <h4>Travel Date To: {{trip.enddate}}</h4>
+    <br>
+    <br>
+      
+    <h1>Other user's joining the trip:</h1>
+    {% for follower in followers %}
+    <h4>{{follower.name}}</h4>
+    {% endfor %}
+
+</body>
+</html>
