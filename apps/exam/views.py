@@ -59,7 +59,8 @@ def travels(request):
         context = {
             'user': User.objects.get(id=request.session['user_id']),
             'userplans': User.objects.get(id=request.session['user_id']).joinplan.all(),
-            'allplans': Plan.objects.exclude(follower=request.session['user_id']),
+            'allplans': Plan.objects.exclude(creator=request.session['user_id'])
+            # 'allplans': Plan.objects.exclude(creator=request.session['user_id']),
         }
         return render(request,'exam/result.html',context)
 
